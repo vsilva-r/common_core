@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!ft_*.c
+!Makefile
+!libft.h
+
+# ...even if they are in subdirectories
+!*/
