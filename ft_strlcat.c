@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
 #include <bsd/string.h> // compile with flag -lbsd 
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
 	unsigned int	src_len;
@@ -24,26 +25,26 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		i++;
 	src_len = i;
 	i = 0;
-	while (dest[i++])
+	while (dst[i++])
 		;
 	dest_len = i - 1;
 	i = 0;
 	while (dest_len + i < size - 1)
 	{
-		dest[dest_len + i] = src[i];
+		dst[dest_len + i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
+	dst[i] = 0;
 	return (dest_len + src_len);
 }
 /*
-int main() // putting null bytes on dest wtf TIREI PAUSA DESTA MERDA
+int main() // putting null bytes on dst wtf TIREI PAUSA DESTA MERDA
 {	
 	char src[] = " World";
-	char dest[] = "Hello";
+	char dst[] = "Hello";
 	unsigned int size = 8;
-	printf("%i, %u\n%s\n", size, ft_strlcat(dest, src, size), dest);
-	//printf("%i, %s\n", size, dest);
+	printf("%i, %u\n%s\n", size, ft_strlcat(dst, src, size), dst);
+	//printf("%i, %s\n", size, dst);
 }
 */
 

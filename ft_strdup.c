@@ -1,53 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsilva-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 17:59:52 by vsilva-r          #+#    #+#             */
-/*   Updated: 2024/03/10 18:00:21 by vsilva-r         ###   ########.fr       */
+/*   Created: 2024/03/19 12:16:28 by vsilva-r          #+#    #+#             */
+/*   Updated: 2024/03/19 12:16:30 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strdup(const char *s)
 {
-	unsigned int	i;
+	char	*dest;
+	int		i;
 
-	i = 0;
-	while (i < n && src[i])
+	i = ft_strlen(s);
+	printf("%d\n", i);
+	dest = malloc(i);
+	while (i >= 0)
 	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
+		dest[i] = s[i];
+		i--;
 	}
 	return (dest);
 }
-
 /*
 int	main()
 {
-	char src[] = "Fucking";
-	char dest[] = "Shit";
-//	char *destp = dest;
-
-	printf("%p Dest\n%p Src\n", dest, src);
-	
-	printf("%s\n", src);
-	printf("%s\n", dest);
-	printf("%s\n", ft_strncpy(dest, src, 5));
-	printf("%s\n", dest);
-	
-//	while (destp != src + 30)
-//	{
-//		printf("%c", *(destp++));
-//	}
+	char	*str = "asdfghjkl;lkjhgfdsertyjnbvftyjkiuhgfrtyji876trfvbnjkiuytg";
+	char	*ptr = ft_strdup(str);
+	printf("%p : %s\n", str, str);
+	printf("%p : %s\n", ptr, ptr);
+	free(ptr);
 }
 */

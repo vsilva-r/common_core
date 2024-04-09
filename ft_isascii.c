@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 
 int	ft_isascii(int c)
 {
-	return (0 <= c && c < 128);
+	return ((0 <= c) && (c < 128));
 }
 /*
 int	main()
@@ -25,4 +26,4 @@ int	main()
 	printf("%d, %s\n", ft_str_is_alpha("\140"), "\140");
 	printf("%d, %s\n", ft_str_is_alpha("\173"), "\173");
 }
-*
+*/

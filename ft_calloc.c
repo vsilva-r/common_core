@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsilva-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 20:31:55 by vsilva-r          #+#    #+#             */
-/*   Updated: 2024/03/04 20:31:59 by vsilva-r         ###   ########.fr       */
+/*   Created: 2024/04/09 10:15:21 by vsilva-r          #+#    #+#             */
+/*   Updated: 2024/04/09 10:15:23 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t		i;
-	char	*temp;
-	char	*d;
+	void		*loc;
+	size_t	i;
 	
-	temp = malloc(sizeof(char));
-	d = dest;
-	if (!dest && !src)
-		return (NULL);
+	loc = malloc(nmemb * size);
 	i = 0;
-	while (i < n)
+	while (i < nmemb * size)
 	{
-		*temp = *(char *)src++;
-		d[i++] = *(char *)temp;
+		((int *)loc)[i++] = 0;
 	}
-	return (dest);
+	return (loc);
 }
-
-/*
-#include <stdio.h>
-
-int main()
-{	
-	int c =	ft_strlen("This string has ? characters");
-
-	printf("%d chars", c);
-}
-*/

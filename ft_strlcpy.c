@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsilva-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 19:17:11 by vsilva-r          #+#    #+#             */
-/*   Updated: 2024/03/17 19:17:12 by vsilva-r         ###   ########.fr       */
+/*   Created: 2024/03/10 17:59:52 by vsilva-r          #+#    #+#             */
+/*   Updated: 2024/03/10 18:00:21 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,41 @@
 #include <stdio.h>
 #include <string.h>
 
-int	ft_strncmp(char *s1, char *s2, int n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
-	int	i;
+	unsigned int	i;
 
-	if (!n)
-		return (0);
 	i = 0;
-	while (s1[i] && s2[i] == s1[i] && i < n - 1)
+	while (i < n && src[i])
 	{
+		dest[i] = src[i];
 		i++;
 	}
-	return (s1[i] - s2[i]);
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
+
 /*
-int main()
+int	main()
 {
-	printf("%d\n", strncmp("", "Al3b", 0));
-	printf("%d\n", ft_strncmp("", "Al3b", 0));
+	char src[] = "Fucking";
+	char dest[] = "Shit";
+//	char *destp = dest;
+
+	printf("%p Dest\n%p Src\n", dest, src);
+	
+	printf("%s\n", src);
+	printf("%s\n", dest);
+	printf("%s\n", ft_strncpy(dest, src, 5));
+	printf("%s\n", dest);
+	
+//	while (destp != src + 30)
+//	{
+//		printf("%c", *(destp++));
+//	}
 }
 */

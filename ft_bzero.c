@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_bzero(void *s, size_t n)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
+	
 	while (n--)
 	{
-		*s++ = '\0';
+		*(int *)s++ = '\0';
 	}
 }
 
-/*
-#include <stdio.h>
 
+#include <stdio.h>
+/*
 int main()
 {	
-	int c =	ft_strlen("This string has ? characters");
-
 	printf("%d chars", c);
 }
 */

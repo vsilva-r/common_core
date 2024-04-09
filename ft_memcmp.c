@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
 #include <unistd.h>
 
-void	*ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*str1;
 	unsigned char	*str2;
@@ -25,5 +26,5 @@ void	*ft_memcmp(const void *s1, const void *s2, size_t n)
 		if (*str1 != *str2)
 			return (*str1 - *str2);
 	}
-	return (NULL);
+	return (0);
 }

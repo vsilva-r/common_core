@@ -10,15 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <unistd.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (s)
+	char	*str;
+	
+	str = (char *)s;
+	while (str)
 	{
-		if (*s == c)
-			return(s)
-		s++;
+		if (*str == c)
+			return (str);
+		str++;
 	}
 	return (NULL);
 }

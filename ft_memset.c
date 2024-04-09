@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
@@ -30,7 +31,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-
+/*
 int main()
 {	
 	char	*a = "sq ";
@@ -40,4 +41,4 @@ int main()
 	
 	//write(1, ft_memset(a, '0', 1), 2);
 }
-
+*/
