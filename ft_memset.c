@@ -16,17 +16,13 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-
-	printf("mee");
-	int	i;
-	int	*p;
+	char	*p;
 	
 	p = s;
-	i = 0;
 	while (n--)
 	{
-		p[i++] = c;
-		printf("Meke");
+		*p = c;
+		p++;
 	}
 	return (s);
 }

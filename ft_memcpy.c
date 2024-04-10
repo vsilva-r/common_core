@@ -14,16 +14,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
 	char	*s;
 	char	*d;
 	
 	s = (char *)src;
 	d = (char *)dest;
-	i = 0;
-	while (i < n)
+	while (n--)
 	{
-		d[i++] = *s;
+		*d++ = *s++;
 	}
 	return (dest);
 }
@@ -32,9 +30,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 #include <stdio.h>
 
 int main()
-{	
-	int c =	ft_strlen("This string has ? characters");
-
-	printf("%d chars", c);
+{
+	char	a[] = "lixo";
+	//char	b[] = "";
+	//printf("%p, %p\n", a, b);
+	printf("%s\n",(char *) ft_memcpy(a + 2, a, 4)-3);	
 }
+
+//	ox89897		&b		ox68999		&a
+//	...19a		b		...19b		a
+//	\0		*b		lixoo\0		*a
 */

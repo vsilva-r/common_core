@@ -55,7 +55,7 @@ int	ft_atoi(const char *nptr)
 	}
 	return (n * sign);
 }
-
+/*
 int main()
 {
 	printf("%d\n", ft_atoi(" \f\f\v \n\v +2147483647 So, can you  atoi"));
@@ -65,3 +65,4 @@ int main()
 }
 
 //	-2147483648 INT_MIN
+*/

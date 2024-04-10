@@ -11,21 +11,32 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	ft_bzero(void *s, size_t n)
 {
+	char	*p;
 	
+	p = s;
 	while (n--)
 	{
-		*(int *)s++ = '\0';
+		*p = 0;
+		p++;
 	}
 }
 
-
-#include <stdio.h>
 /*
 int main()
 {	
-	printf("%d chars", c);
+	char	str[] = "evanescio";
+	ft_bzero(str, 0);
+	int	i = 0;
+	while(!str[i])
+		i++;
+	printf("%s\n", str+i);
 }
+
+
+// bzero(s, 5) 
+// alohomora
 */

@@ -14,19 +14,18 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	char	*temp;
-	char	*d;
+	unsigned char	*dst;
 	
-	temp = malloc(sizeof(char));
-	d = dest;
-	if (!dest && !src)
-		return (NULL);
-	i = 0;
-	while (i < n)
+	dst = dest;
+	if(src < dest)
 	{
-		*temp = *(char *)src++;
-		d[i++] = *(char *)temp;
+		while (n--)
+			(dst)[n] = ((unsigned char *)src)[n];
+	}
+	else
+	{
+		while (n--)
+			*(dst)++ = *(unsigned char *)(src)++;
 	}
 	return (dest);
 }
@@ -35,9 +34,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 #include <stdio.h>
 
 int main()
-{	
-	int c =	ft_strlen("This string has ? characters");
-
-	printf("%d chars", c);
+{
+	char	a[] = "lixo";
+	//char	b[] = "";
+	//printf("%p, %p\n", a, b);
+	printf("%s\n",(char *) ft_memmove(a +3, a, 4)-6	);	
 }
 */

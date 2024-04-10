@@ -6,9 +6,10 @@
 
 int main()
 {
-	void	*s = calloc(9, 4);
-	void	*r = calloc (9, 4);
-	ft_memset(s, 'b', 9);
+	void	*s = ft_calloc(9, 4);
+	void	*r = ft_calloc (9, 4);
+	ft_memset(s, 'b', 8);
+	ft_memset(s, '\0', 1);
 	printf("%s memset OK!\n", (char *)ft_memset(s, 'a', 4));
 	ft_putnbr_fd(INT_MIN, 1); printf(" putnbr_fd OK!\n");
 	printf("%s strchr OK!\n", ft_strchr((char *)s, 'b'));
@@ -24,6 +25,11 @@ int main()
 	printf("%zu, %s strlcpy OK!", ft_strlcpy(cpy, dup, 10), cpy);
 	printf("%d, memcmp OK!", ft_memcmp(s, r, 4));
 	printf("%s, strrchr OK!", ft_strrchr(r, 'a'));
+	ft_bzero(s, 5);
+	printf("%s, bzero OK!", (char *)s);
+	free(s);
+	free(r);
+	free(dup);
 }
 
 /*

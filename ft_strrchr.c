@@ -1,4 +1,4 @@
-* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
@@ -11,20 +11,33 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*p;
-	char	*str;
 	
-	str = (char *)s;
 	p = NULL;
-	while (str)
+	while (*s)
 	{
-		if (*str == c)
-			p = str;
-		str++;
+		if (*s == c)
+			p = (char *)s;
+		s++;
 	}
+	if (!c)
+		p = (char *)s;
 	return (p);
 }
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%s\n", ft_strchr("salamandras", 'l'));
+	printf("%s\n", ft_strrchr("salamandras", 'l'));
+	printf("%s\n", ft_strchr("salamandras", 'a'));
+	printf("%s\n", ft_strrchr("salamandras", 'a'));
+	printf("%s\n", ft_strchr("salamandras", 's'));
+	printf("%s\n", ft_strrchr("salamandras", 's'));
+	printf("%s\n", ft_strchr("salamandras", '\0'));
+	printf("%s\n", ft_strrchr("salamandras", '\0'));
+}
+*/
