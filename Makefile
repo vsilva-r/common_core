@@ -6,13 +6,14 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS := $(wildcard ft_*.c)
 OBJS := $(SRCS:%.c=%.o)
 
-.PHONY = clean test
+.PHONY = all clean test fclean re bonus
 
 all : ${NAME}
 	@echo "Don't forget to delete the test before submitting!"
 
 test : main.c libft.h libft.a
 	@echo " Creating executable for testing..."
+#	cc -fsanitize=address ${CFLAGS} main.c libft.a	
 	cc ${CFLAGS} main.c libft.a	
 
 libft.a: libft.h ${OBJS}

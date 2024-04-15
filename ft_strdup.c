@@ -21,13 +21,16 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = ft_strlen(s);
-//	printf("%d\n", i);
-	dest = malloc(i * sizeof(char));
-	while (i >= 0)
+//	printf("%d LOL\n", i);
+	dest = (char *)ft_calloc(i, sizeof(char));
+//	printf("OK? 1\n");
+	while (--i >= 0)
 	{
+	//	printf("OK? 2\n");
 		dest[i] = s[i];
-		i--;
+	//	printf("%s\n", dest+i);
 	}
+//	printf("OK? 3\n");
 	return (dest);
 }
 /*
