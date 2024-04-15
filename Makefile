@@ -6,33 +6,31 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS := $(wildcard ft_*.c)
 OBJS := $(SRCS:%.c=%.o)
 
-.PHONY = clean
+.PHONY = clean test
 
-all : ${NAME} test
+all : ${NAME}
 	@echo "Don't forget to delete the test before submitting!"
 
 test : main.c libft.h libft.a
 	@echo " Creating executable for testing..."
 	cc ${CFLAGS} main.c libft.a	
-						# 3: COMPILAR O libft.a COM O TEST PROGRAM main.c
 
 libft.a: libft.h ${OBJS}
-	@echo "Linking archive..."		# 2: JUNTAR OBJETOS NUM libft.a
+	@echo "Linking archive..."
 	ar rcs $@ ${OBJS} 
 
 %.o: %.c libft.h
-	@echo "Creating objects..."		# 1: FAZER OBJETOS
+	@echo "Creating objects..."
 	cc ${CFLAGS} ${SRCS} -c
 	
 clean:
 	@echo "Cleaning objects..."
-	rm -rvf *.o *.gch libft.a
+	rm -rvf *.o *.gch
 	
-fclean:
-# FALTA ESTE
+fclean: clean
+	rm -f $(NAME)
 
-re:
-# FALTA ESTE 
+re: fclean all
 
 #			HOW TO CREATE A LIBRARY			
 # Step	1:	Create mylib.h header file 				

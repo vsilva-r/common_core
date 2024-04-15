@@ -16,14 +16,21 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void		*loc;
+	void		*ptr;
 	size_t	i;
 	
-	loc = malloc(nmemb * size);
+	ptr = malloc(nmemb * size);
 	i = 0;
 	while (i < nmemb * size)
 	{
-		((int *)loc)[i++] = 0;
+		((int *)ptr)[i++] = 0;
 	}
-	return (loc);
+	return (ptr);
 }
+
+// int main()
+// {
+// 	int *a = (int *)ft_calloc(1, sizeof(int));
+// 	printf("%d\n", *a);
+// 	free(a);
+// }
