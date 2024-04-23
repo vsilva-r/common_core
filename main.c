@@ -3,7 +3,7 @@
 #include <string.h>
 #include <limits.h>
 #include <bsd/string.h> // compile with flag -lbsd 
-
+/*
 int main()
 {
 	void	*s = ft_calloc(9, 4);
@@ -30,7 +30,7 @@ int main()
 	free(r);
 	free(dup);
 }
-
+*/
 /*
 void	ft_bzero(void *s, size_t n)
 void	*ft_calloc(size_t nmemb, size_t size);

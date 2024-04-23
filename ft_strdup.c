@@ -20,26 +20,21 @@ char	*ft_strdup(const char *s)
 	char	*dest;
 	int		i;
 
-	i = ft_strlen(s);
-//	printf("%d LOL\n", i);
+	i = ft_strlen(s) + 1;
 	dest = (char *)ft_calloc(i, sizeof(char));
-//	printf("OK? 1\n");
 	while (--i >= 0)
 	{
-	//	printf("OK? 2\n");
 		dest[i] = s[i];
-	//	printf("%s\n", dest+i);
 	}
-//	printf("OK? 3\n");
 	return (dest);
 }
 /*
 int	main()
 {
-	char	*str = "asdfghjkl;lkjhgfdsertyjnbvftyjkiuhgfrtyji876trfvbnjkiuytg";
-	char	*ptr = ft_strdup(str);
-	printf("%p : %s\n", str, str);
-	printf("%p : %s\n", ptr, ptr);
-	free(ptr);
+	char *str1 = "O que quiseres\0teste";
+	char *ptr = ft_strdup(str1);
+	
+	printf("%p, %p, %s\n", str1, ptr, ptr);
+	free (ptr); 
 }
 */

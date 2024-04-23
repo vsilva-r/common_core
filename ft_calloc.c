@@ -16,21 +16,27 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void		*loc;
-	
-	if (size <= 0)
+	void		*ptr;
+	size_t		full_size;
+
+	full_size = nmemb * size;
+	if (size && (full_size / size) != nmemb)
 		return (NULL);
-	loc = malloc(nmemb * size);
-	if (loc == NULL)
+	ptr = malloc(full_size);
+	if (!ptr)
 		return (NULL);
-	ft_memset(loc, 0, nmemb * size);
-	return (loc);
+	if (nmemb == 0 || size == 0)
+		return (ptr);
+	ft_memset(ptr, 0, full_size);
+	return (ptr);
 }
 
 /*
 #include <stdio.h>
 int main()
 {
-	printf("%s\n", (char *)ft_calloc(3, -5));
+	void *p = calloc(0, -5);
+	printf("%p\n", p);
+	free(p);
 }
 */

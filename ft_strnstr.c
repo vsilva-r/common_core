@@ -23,37 +23,35 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	char	*haystack;
 	char	*needle;
 
-	
 	haystack = (char *)big;
 	needle = (char *)little;
 	if (*little == '\0')
 		return (haystack);
-	i = -1;
-	while (haystack[++i] && i < len)
+	i = 0;
+	while (haystack[i] && i < len)
 	{
 		j = 0;
-		while (needle[j] == haystack[i] && needle[j])
+		while (needle[j] == haystack[i] && needle[j] && i < len)
 		{
-//			printf("Compared %c, j = %zu \n", needle[j], j);
 			j++;
 			i++;
 		}
-		if (needle[j] == 0 || j == len)
+		if (needle[j] == 0)
 			return (haystack + i - j);
+		else
+			i -= j - 1;
 	}
 	return (NULL);
 }
-
+/*
 #include <limits.h>
 
 int main()
 {
-	int	i = INT_MIN;
 	char haystack[30] = "aaabcabcd";
 	char needle[10] = "aabc";
 	//achar * empty = (char*)"";
-	/* 1 */ printf("%s\n", ft_strnstr(haystack, needle, 0));
-	/* 2 */ printf("%s\n", ft_strnstr(haystack, needle, -1));
-	ft_putnbr_fd(i, 1);
+	printf("%s\n", ft_strnstr(haystack, needle, -5));
+	printf("%s\n", strnstr(haystack, needle, -5));
 }
-
+*/

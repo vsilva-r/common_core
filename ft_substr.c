@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsilva-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:30:58 by vsilva-r          #+#    #+#             */
-/*   Updated: 2024/04/08 19:33:23 by vsilva-r         ###   ########.fr       */
+/*   Created: 2024/04/23 19:29:49 by vsilva-r          #+#    #+#             */
+/*   Updated: 2024/04/23 19:29:50 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*p;
+	char		*substr;
+	size_t		s_len;
 
-	c %= 256;
-	p = NULL;
-	while (*s)
+	s_len = ft_strlen(s);
+	if (start >= s_len)
 	{
-		if (*s == c)
-			p = (char *)s;
-		s++;
+		len = 0;
+		start = s_len;
 	}
-	if (!c)
-		p = (char *)s;
-	return (p);
+	if (len > s_len - start)
+		len = s_len - start;
+	substr = malloc(len + 1);
+	if (!substr)
+	{
+		free(substr);
+		return (NULL);
+	}
+	ft_strlcpy(substr, s + start, len + 1);
+	return (substr);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%s\n", ft_strrchr("tripoulle", 't' + 256));
-}
-*/
