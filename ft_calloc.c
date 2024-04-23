@@ -17,13 +17,20 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void		*loc;
-	size_t	i;
 	
+	if (size <= 0)
+		return (NULL);
 	loc = malloc(nmemb * size);
-	i = 0;
-	while (i < nmemb * size)
-	{
-		((int *)loc)[i++] = 0;
-	}
+	if (loc == NULL)
+		return (NULL);
+	ft_memset(loc, 0, nmemb * size);
 	return (loc);
 }
+
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%s\n", (char *)ft_calloc(3, -5));
+}
+*/

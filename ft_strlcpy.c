@@ -12,24 +12,28 @@
 
 #include "libft.h"
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+/*	Input size: 
+	Return val: length of src
+	Copy (up to) size-1 bytes from src and append NUL */
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
-
+	size_t		src_len;
+	
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
 	i = 0;
-	while ((i < n) && src[i])
+	while ((i < (size - 1)) && src[i])
 	{
 		dst[i] = src[i];
 		i++;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (i);
+	dst[i] = '\0';
+	return (src_len);
 }
 
 /*
@@ -38,17 +42,9 @@ int	main()
 	char src[] = "Fucking";
 	char dest[] = "Shit";
 //	char *destp = dest;
-
-	printf("%p Dest\n%p Src\n", dest, src);
 	
-	printf("%s\n", src);
-	printf("%s\n", dest);
-	printf("%s\n", ft_strncpy(dest, src, 5));
-	printf("%s\n", dest);
-	
-//	while (destp != src + 30)
-//	{
-//		printf("%c", *(destp++));
-//	}
+	ft_putnbr_fd(ft_strlcpy(dest, src, 0), 1); ft_putstr("\n");
+	ft_putstr(src); ft_putstr("\n");
+	ft_putstr(dest);
 }
 */

@@ -16,21 +16,37 @@
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int	i;
+	unsigned char *str1;
+	unsigned char *str2;
 
-	if (!n)
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	if (n == 0)
 		return (0);
-	i = 0;
-	while (s1[i] && s2[i] == s1[i] && i < n - 1)
+	while (--n && *str1 && *str2 == *str1)
 	{
-		i++;
+		str1++;
+		str2++;
 	}
-	return (s1[i] - s2[i]);
+	return (*str1 - *str2);
 }
 /*
 int main()
 {
-	printf("%d\n", strncmp("", "Al3b", 0));
-	printf("%d\n", ft_strncmp("", "Al3b", 0));
+	printf("%d\n", strncmp("1235", "1245", -6)); //-1
+	printf("%d\n", strncmp("1245", "1235", -6)); //1
+	printf("%d\n", strncmp("1235", "1245", -2)); //-1
+	printf("%d\n", strncmp("1245", "1235", -2)); //1
+	printf("%d\n", strncmp("1235", "1245", -1)); //-1
+	printf("%d\n", strncmp("1245", "1235", -1)); //1
+	printf("%d\n", strncmp("1235", "1245", 0));  //0
+	printf("%d\n", strncmp("1245", "1235", 0));  //0
+	printf("%d\n", strncmp("1235", "1245", 1));  	//0
+	printf("%d\n", strncmp("1245", "1235", 1));	//0
+	printf("%d\n", strncmp("1235", "1245", 2)); 	//0
+	printf("%d\n", strncmp("1245", "1235", 2));	//0
+	printf("%d\n", strncmp("1235", "1245", 3)); 	//-1
+	printf("%d\n", strncmp("1245", "1235", 3));	//1
+//	printf("%d\n", ft_strncmp("2234", "1235", -1000));
 }
 */

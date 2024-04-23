@@ -8,7 +8,7 @@ OBJS := $(SRCS:%.c=%.o)
 
 .PHONY = clean
 
-all : ${NAME} test
+all : ${NAME}
 	@echo "Don't forget to delete the test before submitting!"
 
 test : main.c libft.h libft.a
@@ -18,21 +18,21 @@ test : main.c libft.h libft.a
 
 libft.a: libft.h ${OBJS}
 	@echo "Linking archive..."		# 2: JUNTAR OBJETOS NUM libft.a
-	ar rcs $@ ${OBJS} 
+	@ar rcs $@ ${OBJS} 
 
 %.o: %.c libft.h
 	@echo "Creating objects..."		# 1: FAZER OBJETOS
-	cc ${CFLAGS} ${SRCS} -c
+	@cc ${CFLAGS} ${SRCS} -c
 	
 clean:
 	@echo "Cleaning objects..."
-	rm -rvf *.o *.gch libft.a
+	@rm -rvf *.o *.gch
 	
-fclean:
-# FALTA ESTE
+fclean: clean
+	@echo "Cleaning archive..."
+	@rm -rvf ${NAME}
 
-re:
-# FALTA ESTE 
+re: fclean all
 
 #			HOW TO CREATE A LIBRARY			
 # Step	1:	Create mylib.h header file 				

@@ -12,17 +12,26 @@
 
 #include "libft.h"
 #include <unistd.h>
+#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
 	
 	str = (char *)s;
-	while (str)
+	while (*str)
 	{
-		if (*str == c)
+		if (*str == (char) c)
 			return (str);
 		str++;
 	}
+	if (!c)
+		return (str);
 	return (NULL);
 }
+/*
+int main()
+{
+	printf("%s\n", ft_strchr("tripouille", 'z'));
+}
+*/

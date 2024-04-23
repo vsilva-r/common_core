@@ -17,37 +17,31 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
-	unsigned int	src_len;
-	unsigned int	dest_len;
+	size_t		dst_len;
+	size_t		src_len;
 	
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (size < dst_len + 1)
+		return(src_len + size);
 	i = 0;
-	while (src[i] && i < size)
-		i++;
-	src_len = i;
-	i = 0;
-	while (dst[i++])
-		;
-	dest_len = i - 1;
-	i = 0;
-	while (dest_len + i < size - 1)
+	while ((i < (size - dst_len - 1)) && src[i])
 	{
-		dst[dest_len + i] = src[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	dst[i] = 0;
-	return (dest_len + src_len);
+	dst[dst_len + i] = '\0';
+	return (src_len + dst_len);
 }
 /*
-int main() // putting null bytes on dst wtf TIREI PAUSA DESTA MERDA
-{	
-	char src[] = " World";
-	char dst[] = "Hello";
-	unsigned int size = 8;
-	printf("%i, %u\n%s\n", size, ft_strlcat(dst, src, size), dst);
-	//printf("%i, %s\n", size, dst);
+int	main()
+{
+	char dest[] = "Shit";
+	char src[] = "Fucking";
+//	char *destp = dest;
+
+	ft_putnbr_fd(ft_strlcat(dest, src, 6), 1); ft_putstr("\n");
+	ft_putstr(src); ft_putstr("\n");
+	ft_putstr(dest);
 }
 */
-
-// dst = ACBDEFASD\0-------
-// src = 12341323\0
-// pos = ACBDEFASD12341\0

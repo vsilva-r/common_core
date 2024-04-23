@@ -16,6 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char	*p;
 	
+	c %= 256;
 	p = NULL;
 	while (*s)
 	{
@@ -31,13 +32,6 @@ char	*ft_strrchr(const char *s, int c)
 #include <stdio.h>
 int main()
 {
-	printf("%s\n", ft_strchr("salamandras", 'l'));
-	printf("%s\n", ft_strrchr("salamandras", 'l'));
-	printf("%s\n", ft_strchr("salamandras", 'a'));
-	printf("%s\n", ft_strrchr("salamandras", 'a'));
-	printf("%s\n", ft_strchr("salamandras", 's'));
-	printf("%s\n", ft_strrchr("salamandras", 's'));
-	printf("%s\n", ft_strchr("salamandras", '\0'));
-	printf("%s\n", ft_strrchr("salamandras", '\0'));
+	printf("%s\n", ft_strrchr("tripoulle", 't' + 256));
 }
 */
