@@ -19,13 +19,15 @@ static void	write_nbr(int n, int fd)
 
     if (n == 0)
         return;
-    c = n % 10 + '0';
+    c = n % 10;
     n /= 10;
-    if (c < '0')
+    if (n < 0)
     {
         write(fd, "-", 1);
         n = -n;
+        c = -c;
     }
+    c += '0';
     write_nbr(n, fd);
     write(fd, &c, 1);
 }
