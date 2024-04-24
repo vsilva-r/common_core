@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsilva-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 19:29:49 by vsilva-r          #+#    #+#             */
-/*   Updated: 2024/04/23 19:29:50 by vsilva-r         ###   ########.fr       */
+/*   Created: 2024/04/24 11:32:22 by vsilva-r          #+#    #+#             */
+/*   Updated: 2024/04/24 11:32:31 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/*
+char	**ft_split(char const *s, char c)
 {
-	char		*substr;
-	size_t		s_len;
+	char	**array;
+	int		array_size;
 
-	s_len = ft_strlen(s);
-	if (start >= s_len)
+	array_size = 0;
+	while (*s)
 	{
-		len = 0;
-		start = s_len;
+		if (*s == c)
+		{
+			if (*(s + 1) == c)
+			{
+				s++;
+				continue;
+			}
+			array_size += 1;
+		}
 	}
-	if (len > s_len - start)
-		len = s_len - start;
-	substr = ft_calloc(len + 1, sizeof(char));
-	ft_strlcpy(substr, s + start, len + 1);
-	return (substr);
-}
+	array = ft_calloc(
+	*/

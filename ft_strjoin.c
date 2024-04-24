@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsilva-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 19:29:49 by vsilva-r          #+#    #+#             */
-/*   Updated: 2024/04/23 19:29:50 by vsilva-r         ###   ########.fr       */
+/*   Created: 2024/04/24 09:32:53 by vsilva-r          #+#    #+#             */
+/*   Updated: 2024/04/24 09:32:54 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char		*substr;
-	size_t		s_len;
+// Boss era voltar e fazer isto com as listas do Bonus part
 
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-	{
-		len = 0;
-		start = s_len;
-	}
-	if (len > s_len - start)
-		len = s_len - start;
-	substr = ft_calloc(len + 1, sizeof(char));
-	ft_strlcpy(substr, s + start, len + 1);
-	return (substr);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		len;
+	char	*newstr;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	newstr = ft_calloc(len + 1, sizeof(char));
+	if (!newstr)
+		return (NULL);
+	while (*s1)
+		*newstr++ = *s1++;
+	while (*s2)
+		*newstr++ = *s2++;
+	return (newstr - len);
 }
