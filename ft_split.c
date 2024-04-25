@@ -9,24 +9,85 @@
 /*   Updated: 2024/04/24 11:32:31 by vsilva-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
+#include "libft.h"
+
+static char	**init_array(char const *s, char c)
+{
+	int		array_size;
+	char	**array;
+
+	array_size = 1;
+	while (*s == c && *s)
+		s++;
+	while (*s)
+	{
+		if (*++s == c || *s == 0)
+			array_size += 1;
+		while (*s == c && *s)
+			s++;
+	}
+	array = ft_calloc(array_size, sizeof(char *));
+	return (array);
+}
+
+static int	len_substr(char const *s, char c)
+{
+	int	len;
+
+	len = 0;
+	while (!(*(s) == c || *s == 0))
+	{
+		len += 1;
+		s++;
+	}
+	return (len);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	int		array_size;
+	int		k;
 
-	array_size = 0;
+	array = init_array(s, c);
+	k = 0;
 	while (*s)
 	{
-		if (*s == c)
-		{
-			if (*(s + 1) == c)
-			{
-				s++;
-				continue;
-			}
-			array_size += 1;
-		}
+		while (*s == c)
+			s++;
+		if (*s)
+			array[k++] = ft_substr(s, 0, len_substr(s, c));
+		s += len_substr(s, c);
 	}
-	array = ft_calloc(
-	*/
+	return (array);
+}
+/*
+void freeTab(char **tab)
+{
+	for (int i = 0; tab[i] != NULL; ++i)
+		free(tab[i]);
+	free(tab);
+}
+
+int main()
+{
+
+	char	*s = "Hey there friend";
+	int	i = 0;
+	while (s[i])
+	{
+		while (s[i] == ' ')
+			i++;
+		printf("%d, %s\n", len_substr(s + i, ' '), s + i);
+		//array[k++] = ft_substr(s, i, len_substr(s, c));
+		i += len_substr(s + i, ' ');
+	}
+	
+	char	**array;
+	
+	array = ft_split("   Hey ther efriend ", '\0');
+	for (int i = 0; array[i]; i++)
+		printf("%p, %s, %d\n", array + i, array[i], *array[i]);
+	freeTab(array);
+}
+*/
