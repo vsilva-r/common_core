@@ -12,25 +12,32 @@
 
 #include "libft.h"
 
+static size_t	get_number_len(int n)
+{
+	size_t	len;
+
+	len = 0;
+	if (n <= 0)
+		len += 1;
+	while (n)
+	{
+		len += 1;
+		n /= 10;
+	}
+	return (len);
+}
+
 char	*ft_itoa(int n)
 {
 	size_t			len;
 	unsigned int	number;
 	char			*string;
 
-	len = 0;
+	len = get_number_len(n);
 	if (n <= 0)
-	{
-		len += 1;
 		number = -n;
-	}
 	else
 		number = n;
-	while (n)
-	{
-		len += 1;
-		n /= 10;
-	}
 	string = (char *)ft_calloc(len + 1, sizeof(char));
 	if (number == 0)
 	{

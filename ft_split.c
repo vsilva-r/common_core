@@ -14,8 +14,8 @@
 
 static char	**init_array(char const *s, char c)
 {
-	int		array_size;
-	char	**array;
+	size_t		array_size;
+	char		**array;
 
 	array_size = 1;
 	while (*s == c && *s)
@@ -33,7 +33,7 @@ static char	**init_array(char const *s, char c)
 
 static int	len_substr(char const *s, char c)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (!(*(s) == c || *s == 0))
