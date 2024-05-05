@@ -24,7 +24,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		checkpoint = ft_lstnew(f((*lst).content));
 		if (!checkpoint)
 		{
-			ft_lstclear(newlst, del);
+			ft_lstclear(&newlst, del);
 			return (NULL);
 		}
 		ft_lstadd_back(newlst, checkpoint);
