@@ -16,22 +16,24 @@ size_t	ft_strlen(const char *s)
 {
 	int	len;
 
+	if (!s)
+		return (0);
 	len = 0;
-	while (*s)
+	while (s[len])
 	{
-		s++;
 		len++;
 	}
 	return (len);
 }
-
-
+/*
 #include <stdio.h>
-
 int main()
 {	
-	int c =	ft_strlen(NULL);
+	int *c;
+	int a = 0;
+	c = &a;
+	*c = 0;
 
-	printf("%d chars", c);
+	printf("%d chars", *c);
 }
-
+*/

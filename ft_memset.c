@@ -18,6 +18,8 @@ void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*p;
 
+	if (!s)
+		return (NULL);
 	p = s;
 	while (n--)
 	{
@@ -30,11 +32,11 @@ void	*ft_memset(void *s, int c, size_t n)
 /*
 int main()
 {	
-	char	*a = "sq ";
+	char	*a = NULL;
 	
 	ft_memset(a, '0', 0);
 	write(1, a, 3);
 	
-	//write(1, ft_memset(a, '0', 1), 2);
+	write(1, ft_memset(a, '0', 1), 2);
 }
 */

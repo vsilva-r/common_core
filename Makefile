@@ -20,7 +20,7 @@ BONUS_OBJS = $(BONUS:%.c=%.o)
 
 .PHONY = all clean fclean re bonus
 
-all : ${NAME} bonus
+all : ${NAME}
 
 $(NAME): libft.h ${OBJS}
 	@echo "Linking archive..."

@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	s = (char *)src;
 	d = (char *)dest;
-	while (n--)
+	while (dest && src && n--)
 	{
 		*d++ = *s++;
 	}
@@ -28,13 +28,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 /*
 #include <stdio.h>
-
 int main()
 {
 	char	a[] = "lixo";
 	//char	b[] = "";
 	//printf("%p, %p\n", a, b);
-	printf("%s\n",(char *) ft_memcpy(a + 2, a, 4)-3);	
+	printf("%s\n",(char *) ft_memcpy(a + 2, a, 4)-3);
+	printf("%s\n",(char *) ft_memcpy(a + 2, NULL, 0)-3);	
 }
 
 //	ox89897		&b		ox68999		&a

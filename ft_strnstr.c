@@ -16,16 +16,12 @@
 #include <string.h>
 #include <bsd/string.h> // compile with flag -lbsd 
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+static char	*actual_strnstr(char *haystack, char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	char	*haystack;
-	char	*needle;
 
-	haystack = (char *)big;
-	needle = (char *)little;
-	if (*little == '\0')
+	if (*needle == '\0')
 		return (haystack);
 	i = 0;
 	while (haystack[i] && i < len)
@@ -42,6 +38,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			i -= j - 1;
 	}
 	return (NULL);
+}
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	if (!big || !little)
+		return (NULL);
+	return (actual_strnstr((char *)big, (char *)little, len));
 }
 /*
 #include <limits.h>

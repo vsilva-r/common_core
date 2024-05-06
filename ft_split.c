@@ -44,19 +44,36 @@ static int	len_substr(char const *s, char c)
 	return (len);
 }
 
+static char	**free_all(char **array_ptr)
+{
+	while (*array_ptr)
+	{
+		free(*array_ptr);
+		*array_ptr++ = NULL;
+	}
+	free(array_ptr);
+	array_ptr = NULL;
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	int		k;
 
 	array = init_array(s, c);
+	if (!s || !array)
+		return (NULL);
 	k = 0;
 	while (*s)
 	{
 		while (*s == c)
 			s++;
 		if (*s)
-			array[k++] = ft_substr(s, 0, len_substr(s, c));
+			array[k] = ft_substr(s, 0, len_substr(s, c));
+		if (*s && !array[k])
+			return (free_all(array));
+		k++;
 		s += len_substr(s, c);
 	}
 	return (array);

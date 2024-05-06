@@ -15,5 +15,7 @@
 
 void	ft_putstr(char *s)
 {
+	if (!s)
+		return ;
 	ft_putstr_fd(s, 1);
 }
