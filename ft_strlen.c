@@ -25,13 +25,13 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-/*
+
 #include <stdio.h>
 
 int main()
 {	
-	int c =	ft_strlen("This string has ? characters");
+	int c =	ft_strlen(NULL);
 
 	printf("%d chars", c);
 }
-*/
+

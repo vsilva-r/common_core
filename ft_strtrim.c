@@ -18,6 +18,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*strimmed;
 	char	*back;
 
+	if (!(s1 && set))
+		return NULL;
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
 	back = (char *)s1 + ft_strlen(s1) - 1;
@@ -28,4 +30,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (*s1 && s1 <= back)
 		*strimmed++ = *s1++;
 	return (strimmed - len);
+}
+
+int main()
+{
+	printf("%s\n", ft_strtrim(NULL, ""));
 }

@@ -10,12 +10,12 @@ SRCS = ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 		ft_memmove.c ft_putnbr_fd.c  ft_strdup.c  ft_strlen.c  ft_strrchr.c \
 		ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  \
 		ft_putstr_fd.c  ft_strjoin.c ft_striteri.c ft_strmapi.c ft_strtrim.c
-OBJS := $(SRCS:%.c=%.o)
 
 BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 		ft_lstmap.c ft_lstnew.c ft_lstsize.c
-
+				
+OBJS := $(SRCS:%.c=%.o)
 BONUS_OBJS = $(BONUS:%.c=%.o)
 
 .PHONY = all clean fclean re bonus
@@ -24,14 +24,19 @@ all : ${NAME} bonus
 
 $(NAME): libft.h ${OBJS}
 	@echo "Linking archive..."
-	@ar rcs $@ ${OBJS} 
+	@ar rcvs $@ ${OBJS} 
 
-bonus:	libft.h $(OBJS) $(BONUS_OBJS)
+bonus : .bonus
+
+.bonus :	libft.h $(BONUS_OBJS)
 	@echo "Linking bonus..."
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+#	@make OBJS="$(BONUS_OBJS)" ${NAME}
+	@ar rvs $(NAME) $(BONUS_OBJS)
+	@touch .bonus
+
 
 $(OBJS): $(SRCS) libft.h
-	@echo "Creating objects..."		# 1: FAZER OBJETOS
+	@echo "Creating objects..."
 	@cc ${CFLAGS} ${SRCS} -c
 	
 $(BONUS_OBJS): $(BONUS) libft.h
@@ -44,7 +49,7 @@ clean:
 	
 fclean: clean
 	@echo "Cleaning archive..."
-	@rm -rvf ${NAME}
+	@rm -rvf ${NAME} .bonus
 
 re: fclean all
 
