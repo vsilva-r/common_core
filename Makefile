@@ -16,11 +16,11 @@ BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 		ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-BONUS_OBJS = $(BONUS:.c=.o)
+BONUS_OBJS = $(BONUS:%.c=%.o)
 
 .PHONY = all clean fclean re bonus test
 
-all : ${NAME}
+all : ${NAME} bonus
 	@echo "Don't forget to delete the test before submitting!"
 
 test : main.c libft.h libft.a
@@ -36,9 +36,13 @@ bonus:	libft.h $(OBJS) $(BONUS_OBJS)
 	@echo "Linking bonus..."
 	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
-%.o: %.c libft.h
+$(OBJS): $(SRCS) libft.h
 	@echo "Creating objects..."		# 1: FAZER OBJETOS
 	@cc ${CFLAGS} ${SRCS} -c
+	
+$(BONUS_OBJS): $(BONUS) libft.h
+	@echo "Creating bonus objects..."
+	@cc ${CFLAGS} ${BONUS} -c
 	
 clean:
 	@echo "Cleaning objects..."

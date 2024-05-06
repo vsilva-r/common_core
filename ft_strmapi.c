@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-	
+
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*newstr;
 	unsigned int	i;
-	
+
 	newstr = ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	i = 0;
 	while (s[i])
