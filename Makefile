@@ -23,33 +23,39 @@ BONUS_OBJS = $(BONUS:%.c=%.o)
 all : ${NAME}
 
 $(NAME): libft.h ${OBJS}
-	@echo "Linking archive..."
-	@ar rcvs $@ ${OBJS} 
+	@echo -n "Linking archive... "
+	@ar rcs $@ ${OBJS} 
+	@echo "Done."
 
 bonus : .bonus
 
 .bonus :	libft.h $(BONUS_OBJS)
-	@echo "Linking bonus..."
+	@echo -n "Linking bonus... "
 #	@make OBJS="$(BONUS_OBJS)" ${NAME}
-	@ar rvs $(NAME) $(BONUS_OBJS)
+	@ar rs $(NAME) $(BONUS_OBJS)
 	@touch .bonus
+	@echo "Done."
 
 
 $(OBJS): $(SRCS) libft.h
-	@echo "Creating objects..."
+	@echo -n "Creating objects... "
 	@cc ${CFLAGS} ${SRCS} -c
+	@echo "Done."
 	
 $(BONUS_OBJS): $(BONUS) libft.h
-	@echo "Creating bonus objects..."
+	@echo -n "Creating bonus objects... "
 	@cc ${CFLAGS} ${BONUS} -c
+	@echo "Done."
 	
 clean:
-	@echo "Cleaning objects..."
-	@rm -rvf *.o *.gch
+	@echo -n "Cleaning objects... "
+	@rm -rf *.o *.gch
+	@echo "Done."
 	
 fclean: clean
-	@echo "Cleaning archive..."
-	@rm -rvf ${NAME} .bonus
+	@echo -n "Cleaning archive... "
+	@rm -rf ${NAME} .bonus
+	@echo "Done."
 
 re: fclean all
 
