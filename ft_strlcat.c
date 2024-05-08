@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <bsd/string.h> // compile with flag -lbsd 
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -20,8 +18,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t			dst_len;
 	size_t			src_len;
 
-	if (!dst || !src)
-		return (0);
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
 	if (size < dst_len + 1)

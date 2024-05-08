@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <bsd/string.h>
 
 /*	Input size: 
 	Return val: length of src
@@ -23,8 +21,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	unsigned int	i;
 	size_t			src_len;
 
-	if (!(dst && src))
-		return (0);
 	src_len = ft_strlen(src);
 	if (size == 0)
 		return (src_len);

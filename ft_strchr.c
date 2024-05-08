@@ -11,15 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
 
-	if (!s)
-		return (NULL);
 	str = (char *)s;
 	while (*str)
 	{

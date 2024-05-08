@@ -11,17 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <bsd/string.h> // compile with flag -lbsd 
 
-static char	*actual_strnstr(char *haystack, char *needle, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	char	*haystack;
+	char	*needle;
 
-	if (*needle == '\0')
+	haystack = (char *)big;
+	needle = (char *)little;
+	if (*little == '\0')
 		return (haystack);
 	i = 0;
 	while (haystack[i] && i < len)
@@ -38,13 +38,6 @@ static char	*actual_strnstr(char *haystack, char *needle, size_t len)
 			i -= j - 1;
 	}
 	return (NULL);
-}
-
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	if (!big || !little)
-		return (NULL);
-	return (actual_strnstr((char *)big, (char *)little, len));
 }
 /*
 #include <limits.h>
