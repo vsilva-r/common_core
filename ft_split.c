@@ -61,8 +61,10 @@ char	**ft_split(char const *s, char c)
 	char	**array;
 	int		k;
 
+	if (!s)
+		return (NULL);
 	array = init_array(s, c);
-	if (!s || !array)
+	if (!array)
 		return (NULL);
 	k = 0;
 	while (*s)

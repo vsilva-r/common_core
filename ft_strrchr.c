@@ -16,8 +16,6 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char	*p;
 
-	if (!s)
-		return (NULL);
 	c %= 256;
 	p = NULL;
 	while (*s)

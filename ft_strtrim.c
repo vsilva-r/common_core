@@ -31,6 +31,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	len = back - s1 + 1;
 	strimmed = ft_calloc(len + 1, sizeof(char));
+	if (!strimmed)
+		return (NULL);
 	while (*s1 && s1 <= back)
 	{
 		*strimmed++ = *s1++;

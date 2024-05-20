@@ -25,3 +25,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+/*
+int main()
+{
+	printf("%s\n", (char *)memchr(NULL, 'z', 20));
+	printf("%s\n", (char *)ft_memchr(NULL, 'z', 20));
+}
+*/

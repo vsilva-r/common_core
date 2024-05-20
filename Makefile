@@ -15,8 +15,8 @@ BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 		ft_lstmap.c ft_lstnew.c ft_lstsize.c
 				
-OBJS := $(SRCS:%.c=%.o)
-BONUS_OBJS = $(BONUS:%.c=%.o)
+OBJS := $(SRCS:%.c=objs/%.o)
+BONUS_OBJS = $(BONUS:%.c=objs/%.o)
 
 .PHONY = all clean fclean re bonus
 
@@ -29,7 +29,7 @@ $(NAME): libft.h ${OBJS}
 
 bonus : .bonus
 
-.bonus :	libft.h $(BONUS_OBJS)
+.bonus : libft.h $(BONUS_OBJS)
 	@echo -n "Linking bonus... "
 #	@make OBJS="$(BONUS_OBJS)" ${NAME}
 	@ar rs $(NAME) $(BONUS_OBJS)
@@ -39,17 +39,21 @@ bonus : .bonus
 
 $(OBJS): $(SRCS) libft.h
 	@echo -n "Creating objects... "
+	@mkdir -p objs
 	@cc ${CFLAGS} ${SRCS} -c
+	@mv *.o objs
 	@echo "Done."
 	
 $(BONUS_OBJS): $(BONUS) libft.h
 	@echo -n "Creating bonus objects... "
+	@mkdir -p objs
 	@cc ${CFLAGS} ${BONUS} -c
+	@mv *.o objs
 	@echo "Done."
 	
 clean:
 	@echo -n "Cleaning objects... "
-	@rm -rf *.o *.gch
+	@rm -rf objs *.o *.gch
 	@echo "Done."
 	
 fclean: clean

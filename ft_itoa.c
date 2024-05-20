@@ -39,6 +39,8 @@ char	*ft_itoa(int n)
 	else
 		number = n;
 	string = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!string)
+		return (NULL);
 	if (number == 0)
 	{
 		string[0] = '0';
@@ -50,8 +52,6 @@ char	*ft_itoa(int n)
 		number /= 10;
 	}
 	if (len > 0)
-	{
 		string[--len] = '-';
-	}
 	return (string);
 }

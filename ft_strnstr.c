@@ -24,7 +24,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	if (*little == '\0')
 		return (haystack);
 	i = 0;
-	while (haystack[i] && i < len)
+	while ((haystack || len) && haystack[i] && i < len)
 	{
 		j = 0;
 		while (needle[j] == haystack[i] && needle[j] && i < len)
@@ -41,13 +41,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 }
 /*
 #include <limits.h>
-
+#include <bsd/string.h>
 int main()
 {
-	char haystack[30] = "aaabcabcd";
-	char needle[10] = "aabc";
+	char *haystack = NULL;
+	char needle[10] = "lol";
 	//achar * empty = (char*)"";
-	printf("%s\n", ft_strnstr(haystack, needle, -5));
-	printf("%s\n", strnstr(haystack, needle, -5));
+	printf("%s\n", ft_strnstr(haystack, needle, 0));
+//	printf("%s\n", strnstr(haystack, needle, 0));
 }
 */
